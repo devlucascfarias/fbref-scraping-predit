@@ -41,11 +41,14 @@ This section details the technical architecture, stack, and methodologies used i
 
 **Algorithm:**
 1. **Metric Calculation:** For every team, we calculate an **Attack Strength** (Goals Scored / League Avg) and **Defense Strength** (Goals Conceded / League Avg).
-2. **Expected Goals ($\lambda$):** For a match between Team A (Home) and Team B (Away):
-   $$ \lambda_{Home} = \text{Att}_A \times \text{Def}_B \times \text{LeagueAvg} \times \text{HomeAdvantage} $$
-   $$ \lambda_{Away} = \text{Att}_B \times \text{Def}_A \times \text{LeagueAvg} $$
+   ```
+   λ_Home = Att_A × Def_B × LeagueAvg × HomeAdvantage
+   λ_Away = Att_B × Def_A × LeagueAvg
+   ```
 3. **Probability Matrix:** We simulate the probability of every possible scoreline (0-0, 1-0, ... 5-5) using the Probability Mass Function (PMF):
-   $$ P(k) = \frac{\lambda^k e^{-\lambda}}{k!} $$
+   ```
+   P(k) = (λ^k * e^-λ) / k!
+   ```
 4. **Outcome Aggregation:** Summing probabilities where $Goals_A > Goals_B$ gives the Home Win % (and vice versa).
 
 *See `prediction_model.py` for the custom Scikit-Learn Estimator.*
