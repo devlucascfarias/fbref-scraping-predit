@@ -1,0 +1,9 @@
+streamlit
+pandas
+curl_cffi
+beautifulsoup4
+plotly
+scikit-learn
+scipy
+numpy
+lxml
